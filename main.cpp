@@ -39,6 +39,10 @@ void add(std::string& string, int& pos, std::list<std::string>& file_contents){
         it++;
     }
 
+    //delete quotation marks
+    string.erase(string.begin());
+    string.pop_back();
+
     file_contents.insert(it, string);
     pos++;
 }
