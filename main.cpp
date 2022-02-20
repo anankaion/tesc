@@ -56,7 +56,6 @@ void rm(int& pos, std::list<std::string>& file_contents){
 
 void parse_instruction(std::string& instruction, int &pos, std::list<std::string>& file_contents){
     std::vector<std::string> parts = split_string(instruction, ' ');
-    std::cout << parts[0];
 
     if (parts.at(0) == "add") {
         add(parts[1], pos, file_contents);
