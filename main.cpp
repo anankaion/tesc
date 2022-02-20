@@ -46,7 +46,7 @@ void add(std::string& string, int& pos, std::list<std::string>& file_contents){
 void rm(int& pos, std::list<std::string>& file_contents){
     std::list<std::string>::iterator it = file_contents.begin();
 
-    for (int i = 0; i < pos; i++) {
+    for (int i = 0; i < pos-1; i++) {
         it++;
     }
 
@@ -55,14 +55,18 @@ void rm(int& pos, std::list<std::string>& file_contents){
 }
 
 void parse_instruction(std::string& instruction, int &pos, std::list<std::string>& file_contents){
-    std::vector<std::string> parts = split_string(instruction, ' ');
+    std::vector<std::string> parts;
 
-    if (parts.at(0) == "add") {
-        add(parts[1], pos, file_contents);
-    } else if (parts.at(0) == "rm") {
+    if (instruction.at(0) == 'r' && instruction.at(1) == 'm') {
         rm(pos, file_contents);
-    } else if (parts.at(0) == "set") {
-        pos = stoi(parts.at(1));
+    } else {
+        parts = split_string(instruction, ' ');
+
+        if (parts.at(0) == "add") {
+        add(parts[1], pos, file_contents);
+        } else if (parts.at(0) == "set") {
+            pos = stoi(parts.at(1));
+        }
     }
 }
 
